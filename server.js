@@ -7,9 +7,12 @@ const app = express();
 const port = 5000;
 
 // Hbs
-
 const hbs = require('hbs');
-hbs.registerPartials
+app.set('view engine', 'hbs');
+app.set('view engine', 'hbs');
+app.set("views", __dirname + "/views");
+app.use(express.static(__dirname + "/public"));
+
 
 //- Exercici 1
 // Creu un server amb express que retorni a una petició GET /user un json amb el seu nom, edat, i la url sol·licitada.
@@ -25,15 +28,15 @@ app.get('/user', (req, res) => {
 // - Exercici 1
 //Afegeixi una pàgina de index.html visualizable que redirigeixi a una altra about.html
 app.get('/', (req, res) => { 
-    res.status(200).sendFile(path.join(__dirname + '/index.html'));
+    res.status(200).sendFile(path.join(__dirname + '/public/index.html'));
 })// 
 
 app.get('/about.html', (req, res) => { 
-    res.status(200).sendFile(path.join(__dirname + '/about.html'));
+    res.status(200).sendFile(path.join(__dirname + '/public/about.html'));
 })// 
 // Exercici 2
 // Executi el punt anterior utilitzant hbs (https://www.npmjs.com/package/hbs)
-app.set('view engine', 'hbs');
+
 // Nivell 3
 // Exercici 1: Afegeixi un endpoint /upload per a pujar un fitxer al servidor de tipus png, jpg o gif i 
 // retorni un missatge d'error en cas que no coincideixi amb aquestes extensions
