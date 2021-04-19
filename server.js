@@ -1,8 +1,15 @@
 // Load modules and Create server with express
 // directly invocked: const app = require('express')();
-const path = require('path')
+// Express
+const path = require('path');
 const express = require('express');
 const app = express();
+const port = 5000;
+
+// Hbs
+
+const hbs = require('hbs');
+hbs.registerPartials
 
 //- Exercici 1
 // Creu un server amb express que retorni a una petició GET /user un json amb el seu nom, edat, i la url sol·licitada.
@@ -26,7 +33,7 @@ app.get('/about.html', (req, res) => {
 })// 
 // Exercici 2
 // Executi el punt anterior utilitzant hbs (https://www.npmjs.com/package/hbs)
-
+app.set('view engine', 'hbs');
 // Nivell 3
 // Exercici 1: Afegeixi un endpoint /upload per a pujar un fitxer al servidor de tipus png, jpg o gif i 
 // retorni un missatge d'error en cas que no coincideixi amb aquestes extensions
@@ -38,6 +45,6 @@ app.all('*', (req, res) => {
     res.status(404).send("<h1>Sorry, no page found</h1>")
 })
 
-app.listen(5000, () => {
+app.listen(port, () => {
     console.log("Server listeing on port 5000")
 })
