@@ -8,10 +8,11 @@ const app = express();
 // Creu un server amb express que retorni a una petició GET /user un json amb el seu nom, edat, i la url sol·licitada.
 // Adjunti en l'exercici l'exportació del Postman corresponent.
 
-const requrl = path.join(__dirname + '/');
+
 
 app.get('/user', (req, res) => { 
-    res.status(200).json({user: "Ismael", age: 18, url: requrl})
+    const url = req.url
+    res.status(200).json({user: "Ismael", age: 18, url: url})
     //res.send("Testing");
 })
 
@@ -31,13 +32,18 @@ app.get('/about.html', (req, res) => {
 // Exercici 1: Afegeixi un endpoint /upload per a pujar un fitxer al servidor de tipus png, jpg o gif i 
 // retorni un missatge d'error en cas que no coincideixi amb aquestes extensions
 
+app.get('/upload', (req, res) => { 
+    res.status(200).sendFile(path.join(__dirname + '/index.html'));
+})
 
 
-// all() for whatever ressource is needed to be access
+
+// Para el resto no disponisble
 app.all('*', (req, res) => {
     res.status(404).send("<h1>Sorry, no page found</h1>")
 })
 
-app.listen(5000, () => {
-    console.log("Server listeing on port 5000")
+app.listen(5000, function(error){
+    if(error) throw error
+    console.log("Server created Successfully")
 })
