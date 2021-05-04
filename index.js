@@ -63,7 +63,12 @@ app.get("/hbs/about.hbs", (req, res) => {
 // Nivell 3
 // Exercici 1: Afegeixi un endpoint /upload per a pujar un fitxer al servidor de tipus png, jpg o gif i
 // retorni un missatge d'error en cas que no coincideixi amb aquestes extensions
-app.get("/upload", (req, res) => {
+
+const upload = multer({dest: 'upload/'});
+
+app.post("/upload", upload.single('text.txt'), (req, res) => {
+
+    res.status(2001).json("File uploaded");
 });
 
 
