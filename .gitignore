@@ -106,3 +106,7 @@ dist
 
 #Diagrama 
 .drawio/
+
+# other files
+
+test.js
