@@ -1,10 +1,6 @@
-// Load modules
-const path = require("path");
-const hbs = require("hbs");
-
-
 // SERVER: App entry point
 const app = require("./app");
+
 
 // SERVER: port variable
 const PORT = 5000;

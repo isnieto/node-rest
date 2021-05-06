@@ -1,10 +1,14 @@
 // Setting route controllers for all endpoint of th app
-//const express = require("express"); //or Router() needed;
+
+const path = require("path");
+
+
+
+
 const uploadController = require("../controller/upload.js");
 const templateController = require("../controller/hbs_templates.js");
 
 module.exports = (app) => {
-  const controller = require("../controller/upload.js");
 
   // Return data
   app.get("/user", (req, res) => {
@@ -17,7 +21,7 @@ module.exports = (app) => {
     res.status(200).sendFile(path.join(__dirname + "/public/index.html"));
   }); //
 
-  app.get("/about.html", (req, res) => {
+  app.get("/about", (req, res) => {
     res.status(200).sendFile(path.join(__dirname + "/public/about.html"));
   });
 
